@@ -53,13 +53,13 @@ function Update () {
 
     /* Move with estimote messages */
 
-   var controller : CharacterController = GetComponent(CharacterController);
-   controller.transform.position.x = Mathf.LerpAngle(controller.transform.position.x, _position.x, positionDamping * Time.deltaTime);
-   controller.transform.position.z = Mathf.LerpAngle(controller.transform.position.z, _position.z, positionDamping * Time.deltaTime);
+    //var controller : CharacterController = GetComponent(CharacterController);
+    //controller.transform.position.x = Mathf.LerpAngle(controller.transform.position.x, _position.x, positionDamping * Time.deltaTime);
+    //controller.transform.position.z = Mathf.LerpAngle(controller.transform.position.z, _position.z, positionDamping * Time.deltaTime);
    
    // Rotation with smooth (possibly buggy)
-   _rotation.y = Mathf.LerpAngle(_rotation.y, _rotationTarget, _rotationTarget * Time.deltaTime);
-   controller.transform.rotation = Quaternion.EulerAngles(_rotation);
+   //_rotation.y = Mathf.LerpAngle(_rotation.y, _rotationTarget, _rotationTarget * Time.deltaTime);
+   //controller.transform.rotation = Quaternion.EulerAngles(_rotation);
    // Raw rotation update
    // controller.transform.rotation.y = _rotationTarget
    // controller.transform.rotation = Quaternion.EulerAngles(_rotation);
@@ -70,24 +70,24 @@ function Update () {
 
 
 
-    var player = GameObject.Find("Player");
-    player.transform.position = _position;
-    player.transform.rotation = Quaternion.EulerAngles(_rotation);
+     //var player = GameObject.Find("Player");
+     //player.transform.position = _position;
+     //player.transform.rotation = Quaternion.EulerAngles(_rotation);
      
-    // var controller : CharacterController = GetComponent(CharacterController);
+     var controller : CharacterController = GetComponent(CharacterController);
 
     
-    // var rotatePos = Input.GetAxis ("Horizontal") ? 
-    //                    Input.GetAxis ("Horizontal") : joyStickInput(rotateJoystick);
-    // transform.Rotate(0, rotatePos * rotateSpeed, 0);
+    var rotatePos = Input.GetAxis ("Horizontal") ? 
+                       Input.GetAxis ("Horizontal") : joyStickInput(rotateJoystick);
+    transform.Rotate(0, rotatePos * rotateSpeed, 0);
     
     // // Move forward / backward
-    // var forward = transform.TransformDirection(Vector3.forward);
-    // var movePos = Input.GetAxis ("Vertical") ? 
-    //                  Input.GetAxis ("Vertical") : joyStickInput(moveJoystick);
-    // var curSpeed = speed * movePos;
+     var forward = transform.TransformDirection(Vector3.forward);
+     var movePos = Input.GetAxis ("Vertical") ? 
+                      Input.GetAxis ("Vertical") : joyStickInput(moveJoystick);
+     var curSpeed = speed * movePos;
     
-    // controller.SimpleMove(forward * curSpeed);
+     controller.SimpleMove(forward * curSpeed);
 }
 
 function UpdatePosition(message: String){ 
